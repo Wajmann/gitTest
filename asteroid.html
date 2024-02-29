@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asteroid.css">
+    <title>Countdown Timer</title>
+    <script>
+        var deadline = new Date("March 5, 2024 00:00:00").getTime();
+        var x = setInterval(function() {
+        var now = new Date().getTime();
+        var t = deadline - now;
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((t % (1000 * 60)) / 1000);
+        document.getElementById("days").innerHTML =days ;
+        document.getElementById("hours").innerHTML =hours;
+        document.getElementById("minutes").innerHTML = minutes; 
+        document.getElementById("seconds").innerHTML =seconds; 
+        if (t < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "Asteroid Impact Imminent!!";
+          document.getElementById("days").innerHTML ='0';
+          document.getElementById("hours").innerHTML ='0';
+          document.getElementById("minutes").innerHTML ='0' ;
+          document.getElementById("seconds").innerHTML = '0'; }
+      }, 1000);
+        function countdownTimer() {
+             const openingTime = new Date("March 1, 2024 09:00:00");
+            const currentTime = new Date("February 27, 2024 11:05:00");
+            const timeDifference = openingTime - currentTime;
+
+             if (timeDifference <= 0) {
+                 clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "Asteroid Impact!";
+                } 
+             else {
+                 const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                 const hours = Math.floor(timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+                 const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                 const seconds = Math.floor((timeDifference % (1000 * 60 * 60)) / 1000);
+                }
+         }
+
+         const countdown = setInterval(countdownTimer, 1000);
+    </script>
+</head>
+<body>
+    <h1>Asteroid Impact Countdown</h1>
+    <h3>Asteroid Will Reach Earth in:</h3>
+    <p id="countdown">
+        <div id="clockdiv">
+            <div>
+                <span id="days"></span>
+                <div class="smalltext">Days</div>
+            </div>
+            <div>
+                <span id="hours"></span>
+                <div class="smalltext">Hours</div>
+            </div>
+            <div>
+                <span id="minutes"></span>
+                <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+                <span id="seconds"></span>
+                <div class="smalltext">Seconds</div>
+            </div>
+            <br><img src="./project/3asteroidimg.jpeg" alt="">
+      </div>
+    </p>
+
+</body>
+</html>
